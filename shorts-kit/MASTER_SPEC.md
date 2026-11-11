@@ -1,3 +1,6 @@
+---
+published: false
+---
 # 🎬 Master Spec v2: YouTube Shorts (Remotion)
 
 Reusable recipe. Proven on "Don't Pay $200. Give Your Cheap Model Glasses." (48.9 s, $0 API cost). Copy this kit, fill section 0, follow the three phases.
@@ -118,7 +121,7 @@ Title ≤ 100 chars (+2 alternates, `#Shorts`); description = hook, reframe, for
 | YouTube metadata | `metadata.html` | by hand | title, description, tags, pinned comment, upload settings, copy buttons + counters |
 | Master spec | `spec.html` ← `MASTER_SPEC.md` | `build_site.py` | rendered Markdown in the shared menu |
 | Kit pages | `kit.html`, `kitspec.html`, `skill.html`, `cheatsheet.html` | `build_site.py` | rendered Markdown of `shorts-kit/*` |
-Every page also gets the floating 📝 notes panel (`nav.js`: autosave per page, copy / download / clear; key `n` opens, `Esc` closes) and `window.copyText()`. **Copied/downloaded notes start with the page title + URL + time and end with the community CTA** (`CTA` const in `nav.js`; this project: "Join our Skool community: Delivery Pilot", logo `skool.png` shown in the panel). Set the real community URL in `nav.js` when supplied (placeholder `https://www.skool.com` until then).
+Every page also gets the floating 📝 notes panel (`nav.js`: autosave per page, copy / download / clear; key `n` opens, `Esc` closes) and `window.copyText()`. **Copied/downloaded notes start with the page title + URL + time and end with the community CTA** (`CTA` const in `nav.js`; this project: "Join our Skool community: Delivery Pilot", logo `skool.png` shown in the panel). (real link set: https://www.skool.com/delivery-pilot-8938).
 
 **Markdown rendering:** GitHub Pages serves a `.md` URL as raw text (`…/MASTER_SPEC.md` stays raw). To show it formatted inside the menu, `build_site.py` embeds the Markdown as JSON in `<name>.html` and renders it with `marked` (cdnjs, pinned 12.0.2), falling back to plain text offline. **Re-run `python3 -I scripts/build_site.py` after editing any `.md` or re-rendering the video** and commit the generated `.html`.
 
@@ -131,6 +134,13 @@ gh api repos/<user>/<repo>/pages -q '.status+" "+.html_url'                     
 until [ "$(curl -sI "https://<user>.github.io/<repo>/short.mp4?x=$RANDOM" | grep -i content-length | tr -dc 0-9)" = "$(stat -f%z short.mp4)" ]; do sleep 5; done
 open -a "Google Chrome" https://<user>.github.io/<repo>/
 ```
+
+**Raw `.md` URLs get the menu too.** Pages serves `…/MASTER_SPEC.md` as plain `text/markdown` (no menu possible). Fix: put `---\npublished: false\n---` front matter at the top of each `.md` so Jekyll does not publish the raw file; the request then hits **`404.html`**, which maps it to the rendered page (`MASTER_SPEC.md`→`spec.html`, `shorts-kit/README.md`→`kit.html`, `shorts-kit/MASTER_SPEC.md`→`kitspec.html`, `RECOMMENDATIONS.md`→`recommendations.html`, `shorts-kit/syntax/cheatsheet.md`→`cheatsheet.html`). Add new docs to `MAP` in `404.html` and to `MD` in `scripts/build_site.py`. (`build_site.py` strips the front matter before rendering.) Skill files keep their own front matter.
+
+**Menu items always carry an emoji** (`LINKS` in `nav.js`): 📝 Pre-prod · 🎬 Prod · ✅ Post-prod · ▶️ Player & output · 📺 YouTube metadata · 💡 Recommendations · 📘 Master spec · 🧰 Starter kit · 📗 Kit spec v2 · 🚀 Join <community> (external link, new tab).
+
+**CTA (community):** name it, show it, one ask. In the video: `cta` overlay in `storyboard.json` (end card 2.6 s: "join our community", Skool logo, name, URL text, "link in the pinned comment"); `outro_seconds` ≥ 2.6. In the notes panel, metadata description and pinned comment: the full URL. This project: **Delivery Pilot** on Skool, `https://www.skool.com/delivery-pilot-8938`, logo `skool.png` (kept in `assets/img/`).
+
 Rules: the repo must be public (or a paid plan) for Pages; **everything committed becomes public** (voice, on-camera video stills, user photos, plates blurred); keep each file < 100 MB (the MP4 is ~50 MB; the 4K source and `cam.mp4` stay out of git); `remotion/public/*` and heavy intermediates are gitignored; never commit secrets. Live URLs for this project: `https://rifaterdemsahin.github.io/200DollarAiCostLSP/` (`index.html`, `player.html`, `metadata.html`, `spec.html`, `kit.html`).
 
 ## 15. Start prompt for a new Claude session

@@ -1,3 +1,6 @@
+---
+published: false
+---
 # 🎬 Shorts Starter Kit
 
 One folder to start a new YouTube Short fast (built from the "$200 LSP" Short).

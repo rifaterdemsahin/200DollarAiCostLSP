@@ -30,6 +30,12 @@ for i, (w, a, b) in enumerate(raw):
         words[-1]["e"] = round(words[-1]["s"] + (raw[i+1][1]-raw[i][1])/2, 3)
         words.append({"w": "not", "s": words[-1]["e"], "e": round(shift(raw[i+1][1])-t0+H, 3)})
 removed = sum(ce - cs for cs, ce in cuts)
+for pt in sb.get("word_patches", []):                       # fix ASR mistakes while keeping Whisper timing
+    m = pt["match"]
+    for i in range(len(words) - len(m) + 1):
+        if [x["w"] for x in words[i:i+len(m)]] == m:
+            words[i:i+len(m)] = [{"w": pt["to"], "s": words[i]["s"], "e": words[i+len(m)-1]["e"]}]
+            break
 dur = H + (t1 - t0) - removed + O
 total = int(round(dur * FPS))
 starts = []

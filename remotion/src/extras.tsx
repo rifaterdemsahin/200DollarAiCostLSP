@@ -113,3 +113,15 @@ export const Ronaldinho: React.FC = () => {
   </div>;
 };
 
+
+// ---------- CTA end card: community name + logo + URL (spec: name it, show it, one ask) ----------
+export const CtaCard: React.FC = () => {
+  const f = useCurrentFrame(); const a = useSpring(0); const b = useSpring(10); const c = useSpring(22);
+  return <div style={{ position: "absolute", inset: 0, background: "linear-gradient(170deg,#101a3a,#05060d 70%)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 34, overflow: "hidden" }}>
+    <Pop delay={0}><Big size={92} color="#fff">join our community</Big></Pop>
+    <div style={{ background: "#fff", borderRadius: 40, padding: "10px 40px", transform: `scale(${a}) rotate(${(1 - a) * -8}deg)`, boxShadow: "0 18px 0 rgba(0,0,0,.4)" }}><Img src={staticFile("img/skool.png")} style={{ width: 640, display: "block" }} /></div>
+    <div style={{ transform: `scale(${b})` }}><Big size={150} color={C.yellow}>Delivery<br />Pilot</Big></div>
+    <div style={{ transform: `scale(${c})`, background: C.yellow, color: "#0b0b14", fontFamily: FONT, fontSize: 46, padding: "18px 34px", borderRadius: 22 }}>skool.com/delivery-pilot-8938</div>
+    <div style={{ fontFamily: FONT, fontSize: 40, color: "#fff", opacity: c, transform: `translateY(${Math.sin(f / 4) * 8}px)` }}>👇 link in the pinned comment</div>
+  </div>;
+};

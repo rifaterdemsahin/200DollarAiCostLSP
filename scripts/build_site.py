@@ -10,7 +10,7 @@ HEAD = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="v
 TAIL = '</main><script src="nav.js"></script></body></html>'
 
 # ---------- markdown pages ----------
-MD = {"spec.html": ("MASTER_SPEC.md", "Master spec"), "kitspec.html": ("shorts-kit/MASTER_SPEC.md", "Kit master spec v2"),
+MD = {"recommendations.html": ("RECOMMENDATIONS.md", "Recommendations & sanity check"), "spec.html": ("MASTER_SPEC.md", "Master spec"), "kitspec.html": ("shorts-kit/MASTER_SPEC.md", "Kit master spec v2"),
       "kit.html": ("shorts-kit/README.md", "Starter kit"), "skill.html": ("shorts-kit/skills/new-short/SKILL.md", "Skill: new-short"),
       "cheatsheet.html": ("shorts-kit/syntax/cheatsheet.md", "Syntax cheatsheet")}
 for page, (src, title) in MD.items():

@@ -11,12 +11,14 @@ const MAP: Record<string, React.FC<any>> = { price: S.Price, commute: S.Commute,
 
 const CAM: Record<string, React.FC> = { carpay: X.CamCarPay, guess: X.CamGuess, shades: X.CamShades, landrover: X.CamLandRover, bank: X.CamBank };
 const INNER: Record<string, React.FC<any>> = { shades: X.EyeGlasses };
-const OVER: Record<string, React.FC> = { ronaldinho: X.Ronaldinho };
+const OVER: Record<string, React.FC> = { ronaldinho: X.Ronaldinho, cta: X.CtaCard };
 const Subs: React.FC = () => {
   const f = useCurrentFrame(); const t = f / data.fps;
   const idx = data.words.findIndex((w, i) => t >= w.s && (i === data.words.length - 1 || t < data.words[i + 1].s));
   if (idx < 0 || t > data.words[data.words.length - 1].e + .4) return null;
-  const g = Math.floor(idx / 3) * 3; const grp = data.words.slice(g, g + 3);
+  let g = 0; for (let i = 0; i <= idx; i++) { if (i === 0 || i - g >= 3 || /[.!?]$/.test(data.words[i - 1].w)) g = i; }   // groups of 3, break at sentence ends
+  let n = 1; while (n < 3 && g + n < data.words.length && !/[.!?]$/.test(data.words[g + n - 1].w)) n++;
+  const grp = data.words.slice(g, g + n);
   return <div style={{ position: "absolute", bottom: 330, left: 60, width: 960, display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0 22px" }}>
     {grp.map((w, i) => <span key={g + i} style={{ fontFamily: FONT, fontSize: 84, textTransform: "uppercase", color: g + i === idx ? C.yellow : "#fff",
       WebkitTextStroke: "10px #000", paintOrder: "stroke fill", transform: g + i === idx ? "scale(1.12)" : "none" }}>{w.w}</span>)}

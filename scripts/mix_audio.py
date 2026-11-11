@@ -60,6 +60,7 @@ for c in D.get("cams", []):                      # video cut-in whoosh; Land Rov
     if c["id"] == "shades": add(sfx, c["from"]/D["fps"] + 1.4, ding(1568), .8)
 for o in D.get("overlays", []):
     if o["id"] == "bank": add(sfx, o["from"]/D["fps"] + .2, ding(1760), .9); add(sfx, o["from"]/D["fps"] + .45, ding(2093), .9)
+    if o["id"] == "cta": add(sfx, o["from"]/D["fps"] + .05, whoosh(.35), .6); add(sfx, o["from"]/D["fps"] + .4, ding(1568), .9)
     if o["id"] == "ronaldinho": add(sfx, o["from"]/D["fps"], snap(), 1.0)
 def wr(path, b, g):
     with wave.open(path, "wb") as w:

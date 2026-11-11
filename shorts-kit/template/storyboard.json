@@ -15,7 +15,7 @@
   "cuts_note": "removes 'distilled, goes away' (user request); zoom-time seconds"
  },
  "hook_seconds": 1.5,
- "outro_seconds": 1.2,
+ "outro_seconds": 2.6,
  "scenes": [
   {
    "id": 1,
@@ -114,7 +114,7 @@
   {
    "id": "landrover",
    "from": 43.1,
-   "to": 47.1
+   "to": 45.4
   }
  ],
  "overlays": [
@@ -128,6 +128,28 @@
    "id": "ronaldinho",
    "from": 30.35,
    "to": 33.3
+  },
+  {
+   "id": "cta",
+   "from": 45.4,
+   "to": 48.5,
+   "note": "Skool end card: Delivery Pilot"
   }
- ]
+ ],
+ "word_patches": [
+  {
+   "match": [
+    "a",
+    "relax."
+   ],
+   "to": "relaxed.",
+   "note": "Whisper medium heard 'a relax'; script says 'relaxed'"
+  }
+ ],
+ "cta": {
+  "name": "Delivery Pilot",
+  "platform": "Skool",
+  "url": "https://www.skool.com/delivery-pilot-8938",
+  "logo": "skool.png"
+ }
 }

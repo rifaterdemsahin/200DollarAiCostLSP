@@ -1,3 +1,6 @@
+---
+published: false
+---
 # Syntax cheatsheet (everything used in the LSP Short)
 
 ## Remotion

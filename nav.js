@@ -1,12 +1,14 @@
 // Shared menu: included by every page. Edit LINKS once, all pages update.
 (function () {
   const LINKS = [
-    ["index.html#preprod", "1 · Pre-prod"], ["index.html#prod", "2 · Prod"], ["index.html#postprod", "3 · Post-prod"],
-    ["player.html", "▶️ Player & output"], ["metadata.html", "YouTube metadata"], ["spec.html", "Master spec"], ["kit.html", "Starter kit"], ["kitspec.html", "Kit spec v2"],
+    ["index.html#preprod", "📝 Pre-prod"], ["index.html#prod", "🎬 Prod"], ["index.html#postprod", "✅ Post-prod"],
+    ["player.html", "▶️ Player & output"], ["metadata.html", "📺 YouTube metadata"], ["recommendations.html", "💡 Recommendations"],
+    ["spec.html", "📘 Master spec"], ["kit.html", "🧰 Starter kit"], ["kitspec.html", "📗 Kit spec v2"],
+    ["https://www.skool.com/delivery-pilot-8938", "🚀 Join Delivery Pilot"],
   ];
   const here = location.pathname.split("/").pop() || "index.html";
   const nav = document.createElement("nav");
-  nav.innerHTML = `<b>🚗 $200 LSP Short</b>` + LINKS.map(([h, t]) => `<a href="${h}" ${h.split("#")[0] === here ? 'class="on"' : ""}>${t}</a>`).join("");
+  nav.innerHTML = `<b>🚗 $200 LSP Short</b>` + LINKS.map(([h, t]) => `<a href="${h}" ${h.startsWith("http") ? 'target="_blank" rel="noopener"' : ""} ${h.split("#")[0] === here ? 'class="on"' : ""}>${t}</a>`).join("");
   document.body.prepend(nav);
 })();
 
@@ -21,10 +23,10 @@
       <textarea id="note-box" rows="9" placeholder="Take notes here (saved in this browser)…"></textarea>
       <div class="np-row"><button class="btn" id="note-copy">📋 Copy</button><button class="btn" id="note-dl">⬇️ Download</button><button class="btn" id="note-clear">🗑️ Clear</button></div>
       <div class="cnt" id="note-st"></div>
-      <a class="np-cta" href="https://www.skool.com" target="_blank" rel="noopener"><img src="skool.png" alt="Skool"><span>Join our Skool community<br><b>Delivery Pilot</b></span></a></div>`;
+      <a class="np-cta" href="https://www.skool.com/delivery-pilot-8938" target="_blank" rel="noopener"><img src="skool.png" alt="Skool"><span>Join our Skool community<br><b>Delivery Pilot</b></span></a></div>`;
   document.body.appendChild(wrap);
   // what gets copied / downloaded: page reference on top, community CTA at the end
-  const CTA = "Join our Skool community: Delivery Pilot 🚀";
+  const CTA = "Join our Skool community: Delivery Pilot 🚀 https://www.skool.com/delivery-pilot-8938";
   const out = () => "📝 Notes — " + (document.title || page) + "\n🔗 " + location.href.split("?")[0] + "\n🕒 " + new Date().toLocaleString() + "\n\n" + box.value.trim() + "\n\n— — —\n" + CTA + "\n";
   const $ = (id) => wrap.querySelector(id), box = $("#note-box"), st = $("#note-st"), panel = $("#note-panel");
   const say = (m) => { st.textContent = m; };

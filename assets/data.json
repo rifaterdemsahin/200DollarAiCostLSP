@@ -29,7 +29,7 @@
   {
    "id": "landrover",
    "from": 1293,
-   "dur": 120
+   "dur": 68
   }
  ],
  "overlays": [
@@ -42,10 +42,15 @@
    "id": "ronaldinho",
    "from": 910,
    "dur": 88
+  },
+  {
+   "id": "cta",
+   "from": 1362,
+   "dur": 93
   }
  ],
  "fps": 30,
- "total": 1412,
+ "total": 1454,
  "hook": 45,
  "voice_delay": 1.5,
  "scenes": [
@@ -113,7 +118,7 @@
    "id": 11,
    "type": "keep",
    "from": 1279,
-   "dur": 132
+   "dur": 174
   }
  ],
  "words": [
@@ -603,13 +608,8 @@
    "e": 41.37
   },
   {
-   "w": "a",
+   "w": "relaxed.",
    "s": 41.37,
-   "e": 41.97
-  },
-  {
-   "w": "relax.",
-   "s": 41.97,
    "e": 42.23
   },
   {

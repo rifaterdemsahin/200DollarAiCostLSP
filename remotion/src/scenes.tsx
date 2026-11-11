@@ -37,12 +37,12 @@ export const Errors: React.FC = () => {
   const f = useCurrentFrame();
   return <Fill bg="#12060a">
     <Shake amp={f < 40 ? 12 : 4}>
-      <div style={{ width: 960, background: "#1b0a10", border: `6px solid ${C.red}`, borderRadius: 24, padding: 30, fontFamily: MONO, fontSize: 42, color: C.red, lineHeight: 1.5, height: 800, overflow: "hidden" }}>
+      <div style={{ width: 960, background: "#1b0a10", border: `6px solid ${C.red}`, borderRadius: 24, padding: 30, fontFamily: MONO, fontSize: 42, color: C.red, lineHeight: 1.5, height: 600, overflow: "hidden" }}>
         {Array.from({ length: 16 }).map((_, i) => { const n = Math.floor(f / 3) - i; return n >= 0 ? <div key={i} style={{ opacity: 1 - i * .04 }}>✖ {ERR[(n + i) % ERR.length]}</div> : null; })}
       </div>
     </Shake>
-    <Pop delay={12}><Big size={120} color={C.red}>undefined is<br />not a function</Big></Pop>
-    <Pop delay={30} style={{ position: "absolute", bottom: 560, right: 60 }}><Emoji c="🤦" size={300} /></Pop>
+    <Pop delay={12}><Big size={104} color={C.red}>undefined is<br />not a function</Big></Pop>
+    <Pop delay={30} style={{ position: "absolute", top: 90, right: 50 }}><Emoji c="🤦" size={210} /></Pop>
   </Fill>;
 };
 
@@ -68,7 +68,7 @@ export const Toggle: React.FC = () => {
       <div style={{ width: 760, height: 360, borderRadius: 180, background: on > .5 ? C.green : "#3a3a55", position: "relative", boxShadow: on > .5 ? `0 0 120px ${C.green}` : "none" }}>
         <div style={{ position: "absolute", top: 30, left: 30 + on * 400, width: 300, height: 300, borderRadius: 150, background: "#fff" }} />
       </div>
-      <Big size={220} color={on > .5 ? C.green : C.dim}>LSP {on > .5 ? "ON" : "OFF"}</Big>
+      <Big size={170} color={on > .5 ? C.green : C.dim} style={{ whiteSpace: "nowrap" }}>LSP {on > .5 ? "ON" : "OFF"}</Big>
     </div>
     {on > .5 && <Confetti from={32} />}
   </Fill>;
@@ -97,7 +97,7 @@ export const Fixes: React.FC<{ dur: number }> = ({ dur }) => {
     {lf < 3 && <div style={{ position: "absolute", inset: 0, background: "#fff", opacity: .8 }} />}
     <Pop key={i}><Emoji c={ok ? "✅" : "❌"} size={420} /></Pop>
     <Pop key={"t" + i} delay={2}><Big size={140} color={ok ? C.green : C.red}>{labels[i]}</Big></Pop>
-    <div style={{ position: "absolute", bottom: 480, display: "flex", gap: 30 }}>{[0, 1, 2].map(k => <div key={k} style={{ width: 90, height: 90, borderRadius: 45, background: k <= i && (k < i || ok) ? C.green : "#333" }} />)}</div>
+    <div style={{ position: "absolute", bottom: 640, display: "flex", gap: 30 }}>{[0, 1, 2].map(k => <div key={k} style={{ width: 90, height: 90, borderRadius: 45, background: k <= i && (k < i || ok) ? C.green : "#333" }} />)}</div>
     {i === 2 && ok && <Confetti from={Math.floor(seg * 2) + 10} />}
   </Fill>;
 };
@@ -125,7 +125,7 @@ export const BlackHole: React.FC = () => {
       {Array.from({ length: 14 }).map((_, i) => { const p = ((f * .035 + i / 14) % 1); const a = i * 1.9 + p * 7; const r = 560 * (1 - p); return <text key={i} x={540 + Math.cos(a) * r} y={820 + Math.sin(a) * r * .5} fontSize={90 * (1 - p * .7)} textAnchor="middle" fontFamily="Apple Color Emoji">🪙</text>; })}
     </svg>
     <Pop style={{ position: "absolute", top: 160 }}><Big size={120}>no LSP =</Big></Pop>
-    <Pop delay={16} style={{ position: "absolute", top: 1120 }}><Big size={130} color={C.purple}>token<br />black hole</Big></Pop>
+    <Pop delay={16} style={{ position: "absolute", top: 1040 }}><Big size={120} color={C.purple}>token<br />black hole</Big></Pop>
   </Fill>;
 };
 
