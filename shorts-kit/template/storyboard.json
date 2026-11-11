@@ -1,0 +1,20 @@
+{
+  "title": "Don't Pay $200. Give Your Cheap Model Glasses.",
+  "language": "en",
+  "take": { "source": "ZOOM0023.WAV", "start": 68.2, "end": 114.4, "note": "second (last) take; first take at 22-61s is discarded" },
+  "hook_seconds": 1.5,
+  "outro_seconds": 1.2,
+  "scenes": [
+    { "id": 1,  "type": "price",    "start_word": "$200",       "action": "Slam laptop shut, snatch car keys" },
+    { "id": 2,  "type": "commute",  "start_word": "This",       "action": "Dangle keys at camera" },
+    { "id": 3,  "type": "errors",   "start_word": "Undefined",  "action": "Spin laptop to red error wall, facepalm" },
+    { "id": 4,  "type": "guess",    "start_word": "Cheap",      "action": "Shrug, eeny-meeny over keyboard" },
+    { "id": 5,  "type": "toggle",   "start_word": "So",         "action": "Flip laptop open, zoom Kilo panel" },
+    { "id": 6,  "type": "squiggle", "start_word": "The#2",        "action": "Draw squiggle in air, throw at screen" },
+    { "id": 7,  "type": "fixes",    "start_word": "Wrong",      "action": "Three snap cuts ending on green ticks" },
+    { "id": 8,  "type": "smart",    "start_word": "Distilled#2",  "action": "Sunglasses on, lean back" },
+    { "id": 9,  "type": "blackhole","start_word": "Without",    "action": "Zoom into dark bin, toss paper" },
+    { "id": 10, "type": "wallet",   "start_word": "If",         "action": "Pull out pocket, wallet relaxes" },
+    { "id": 11, "type": "keep",     "start_word": "Start",      "action": "Jingle keys, open door, cut to black" }
+  ]
+}

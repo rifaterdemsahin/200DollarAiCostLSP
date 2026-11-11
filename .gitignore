@@ -1,0 +1,11 @@
+node_modules/
+__pycache__/
+remotion/node_modules/
+remotion/public/*
+!remotion/public/.gitkeep
+remotion/out/
+assets/audio/music.wav
+assets/audio/sfx.wav
+assets/audio/mix.wav
+.DS_Store
+*.swp

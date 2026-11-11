@@ -1,0 +1,16 @@
+:root{--bg:#0b0b14;--card:#161625;--ink:#f4f4fb;--dim:#9aa0bd;--y:#ffd23f;--g:#2ee59d;--r:#ff3b4e;--b:#3ea8ff}
+@media (prefers-color-scheme:light){:root{--bg:#f6f6fb;--card:#fff;--ink:#14141f;--dim:#555a75}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+nav{position:sticky;top:0;z-index:9;display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:10px 16px;background:#0b0b14ee;backdrop-filter:blur(8px);border-bottom:2px solid var(--y)}
+nav b{color:var(--y);margin-right:10px}nav a{color:#fff;text-decoration:none;padding:6px 12px;border-radius:20px;font-size:14px}nav a:hover,nav a.on{background:var(--y);color:#000}
+main{max-width:1020px;margin:0 auto;padding:16px}section{scroll-margin-top:70px;margin:34px 0}
+h1{font-size:30px;margin:.2em 0}h2{font-size:26px;border-left:8px solid var(--y);padding-left:12px}h3{margin-top:1.4em}
+.card{background:var(--card);border-radius:14px;padding:16px 18px;margin:12px 0;border:1px solid #ffffff14}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:7px 9px;border-bottom:1px solid #ffffff1f;text-align:left;vertical-align:top}th{color:var(--y)}
+code,pre{font-family:ui-monospace,Menlo,monospace;font-size:13px}pre{background:#000;color:#cdd6f4;padding:12px;border-radius:10px;overflow:auto;white-space:pre-wrap}
+video{max-width:100%;border-radius:14px;background:#000}.hero{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start}.hero video{width:300px}
+.btn{display:inline-block;background:var(--y);color:#000;padding:8px 14px;border-radius:10px;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:14px;margin:4px 6px 4px 0}
+.ok{color:var(--g)}.bad{color:var(--r)}.dim{color:var(--dim)}.tag{display:inline-block;background:#ffffff18;padding:2px 9px;border-radius:12px;margin:2px;font-size:13px}
+.act{color:var(--b)}textarea{width:100%;background:#000;color:#eee;border:1px solid #444;border-radius:8px;padding:10px;font:14px/1.5 ui-monospace,Menlo,monospace}
+.cnt{font-size:12px;color:var(--dim)}@media(max-width:600px){h1{font-size:24px}}
