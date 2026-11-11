@@ -174,7 +174,7 @@ Rules: the repo must be public (or a paid plan) for Pages; **everything committe
 
 **Working rule:** commit **and push** after every change; verify the live Pages file (`content-length` equals local) before reporting done.
 
-## 17. Design: one Short = one new term → community (flywheel)
+## 16. Design: one Short = one new term → community (flywheel)
 Page: `design.html` (menu 🧭), built by `scripts/build_design.py` (mermaid diagrams via cdnjs `mermaid@10.9.1`, plain-text fallback offline).
 
 **Principle.** Every Short teaches **one term people need to learn** (example: LSP), makes it matter with a metaphor + one payoff, and sends viewers to the **community (Skool: Delivery Pilot)** for the step-by-step. The pinned comment explains the term in 3 sentences (value without a click) and links for depth.
@@ -189,5 +189,5 @@ Page: `design.html` (menu 🧭), built by `scripts/build_design.py` (mermaid dia
 
 **Measure (hypothesis, no baseline yet):** comments asking "what is X?", new community members after each Short (add a join question "Which Short brought you here?"), activation (intro/result posts), proof shared per term, member-requested terms that become Shorts. Judge the first 3–5 term Shorts as an experiment; no income or result promises to members.
 
-## 18. Start prompt for a new Claude session
+## 17. Start prompt for a new Claude session
 > Use shorts-kit/MASTER_SPEC.md. Inputs: recording `<path>`, script idea `<paste>`. Last takes are the correct takes. Bootstrap with new-short.sh, build the Short with Remotion (fun, action), one index.html with preprod/prod/postprod + shared menu, a separate metadata.html, update the master spec, commit on a branch, push, deploy, give me clickable URLs.
