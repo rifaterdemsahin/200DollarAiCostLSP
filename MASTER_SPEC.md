@@ -376,6 +376,9 @@ open -a "Google Chrome" https://<user>.github.io/<repo>/
 
 **CTA (community):** name it, show it, one ask. In the video: `cta` overlay in `storyboard.json` (end card 2.6 s: "join our community", Skool logo, name, URL text, "link in the pinned comment"); `outro_seconds` ≥ 2.6. In the notes panel, metadata description and pinned comment: the full URL. This project: **Delivery Pilot** on Skool, `https://www.skool.com/delivery-pilot-8938`, logo `skool.png` (kept in `assets/img/`).
 
+
+**Community page (`skool.html`, menu 🏫):** built by `scripts/build_community.py` (edit the strings, re-run, commit). Contains the community logo + join button, an **"What is LSP?" explainer** (what it is, what it gives, why it helps cheap models, diagram, honest caveats: not a magic switch, verify the tool passes diagnostics, language server must be installed, OpenCode docs say not always a net positive) and copy-paste **pinned comments**: the YouTube comment (hook line, one-paragraph explainer, CTA + URL, question) and the community's welcome post (start-here steps, explainer, rules of thumb). The same script patches `metadata.html` so the comments never drift. **Every Short's pinned comment explains the core concept in 2–3 sentences** (viewers who don't know the term still get the value) and ends with a question.
+
 Rules: the repo must be public (or a paid plan) for Pages; **everything committed becomes public** (voice, on-camera video stills, user photos, plates blurred); keep each file < 100 MB (the MP4 is ~50 MB; the 4K source and `cam.mp4` stay out of git); `remotion/public/*` and heavy intermediates are gitignored; never commit secrets. Live URLs for this project: `https://rifaterdemsahin.github.io/200DollarAiCostLSP/` (`index.html`, `player.html`, `metadata.html`, `spec.html`, `kit.html`).
 
 Rendered version of this file: [spec.html](spec.html) (same menu as every page).
