@@ -96,6 +96,12 @@ Title ≤ 100 chars (+2 alternates, `#Shorts`); description = hook, reframe, for
 | Silent 4K video + separate WAV | Don't fake lip-sync; motion graphics now, synced picture-in-picture in v2 |
 | Emoji glasses misplaced in thumbnail | Check the still at full size; nudge `top/left` |
 | `sed -i` on macOS | `sed -i ''` or edit with a script |
+| Subtitle "gets a relax" (ASR error) | `word_patches` in `storyboard.json`; re-check with a second transcription |
+| Subtitle group "import, fixed, distilled" crossed sentences | break groups at `. ! ?` |
+| Kit failed type-check on a fresh copy | ship placeholder `data.json`/`eyes.json`; run the from-scratch test |
+| `.git` 172 MB from re-committing the MP4 | Releases/LFS or milestone-only commits |
+| Raw `.md` on Pages has no menu | `published: false` front matter + `404.html` router → rendered page |
+| Huge "LSP OFF" clipped at the left edge | `white-space: nowrap` and ≤ 170 px for 7-char headlines |
 | Earlier fal-based flow cost money | Local synth audio + emoji/SVG visuals = $0; use fal only for realistic imagery (see old spec in `MASTER_SPEC_fal_v1.md` if present) |
 
 
@@ -142,6 +148,27 @@ open -a "Google Chrome" https://<user>.github.io/<repo>/
 **CTA (community):** name it, show it, one ask. In the video: `cta` overlay in `storyboard.json` (end card 2.6 s: "join our community", Skool logo, name, URL text, "link in the pinned comment"); `outro_seconds` ≥ 2.6. In the notes panel, metadata description and pinned comment: the full URL. This project: **Delivery Pilot** on Skool, `https://www.skool.com/delivery-pilot-8938`, logo `skool.png` (kept in `assets/img/`).
 
 Rules: the repo must be public (or a paid plan) for Pages; **everything committed becomes public** (voice, on-camera video stills, user photos, plates blurred); keep each file < 100 MB (the MP4 is ~50 MB; the 4K source and `cam.mp4` stay out of git); `remotion/public/*` and heavy intermediates are gitignored; never commit secrets. Live URLs for this project: `https://rifaterdemsahin.github.io/200DollarAiCostLSP/` (`index.html`, `player.html`, `metadata.html`, `spec.html`, `kit.html`).
+
+## 16. Review pass: recommendations page + sanity-check fixes (added 2026-11-11)
+**Deliverable:** `RECOMMENDATIONS.md` → `recommendations.html` (menu 💡): honest verdict, ranked recommendations with why/effort, a measured sanity-check table, a "not verified" list, next steps. Do this **before** calling a Short done.
+
+**Run these checks with evidence, not by eye alone:**
+1. Contact sheet of the final MP4 every ~2.5 s (`ffmpeg -ss T … tile=9x2`) and **read every tile**: clipped banners, props over faces, text colliding with subtitles (y 1500–1700), progress dots, emoji over headlines.
+2. Subtitles vs audio: re-transcribe the cleaned voice with a second model/size; where they disagree with the script, patch it (below).
+3. `ebur128=peak=true` on the final MP4 (AAC re-encode costs ~1.5 LU); lip-sync lag per window (< 1 frame).
+4. Link check across all pages (every local `href/src` exists); `grep` for secrets (the spec's own placeholder `fal_sk_` is a known false positive).
+5. **Test the kit from scratch**: `new-short.sh <tmp>` then `npx tsc --noEmit` in `remotion/`. (This caught missing `data.json`/`eyes.json`; the template now ships placeholder copies in `remotion/public/`.)
+6. Rights check: third-party photos (people, cars), logos (name-only use), plates/identifiers blurred.
+
+**New storyboard fields:**
+- `word_patches: [{"match":["a","relax."],"to":"relaxed."}]` fixes ASR mistakes while keeping Whisper's timing (applied after cuts).
+- `take.cuts`, `cams`, `overlays`, `cta`, `outro_seconds` (≥ 2.6 s so the end card can be read).
+
+**Subtitle rule:** groups of up to 3 words, **never across a sentence end** (`. ! ?`), current word highlighted.
+
+**Repo hygiene:** do not commit a new MP4 for every iteration: each version stays in git history (this project: `.git` 172 MB after 4 versions). Use GitHub Releases / Git LFS for `short.mp4`, or commit it only at milestones; never rewrite history or force-push without the owner's OK.
+
+**Working rule:** commit **and push** after every change; verify the live Pages file (`content-length` equals local) before reporting done.
 
 ## 15. Start prompt for a new Claude session
 > Use shorts-kit/MASTER_SPEC.md. Inputs: recording `<path>`, script idea `<paste>`. Last takes are the correct takes. Bootstrap with new-short.sh, build the Short with Remotion (fun, action), one index.html with preprod/prod/postprod + shared menu, a separate metadata.html, update the master spec, commit on a branch, push, deploy, give me clickable URLs.

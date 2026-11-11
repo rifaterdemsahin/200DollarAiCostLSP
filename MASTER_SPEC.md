@@ -381,3 +381,29 @@ Rules: the repo must be public (or a paid plan) for Pages; **everything committe
 Rendered version of this file: [spec.html](spec.html) (same menu as every page).
 
 **Working rule:** commit **and push** after every change (not only at the end); feature branch, then verify the live Pages file.
+
+---
+
+## 22. 🆕 Update: review pass, recommendations, repo hygiene (2026-11-11)
+
+**Deliverable:** `RECOMMENDATIONS.md` → `recommendations.html` (menu 💡): honest verdict, ranked recommendations with why/effort, a measured sanity-check table, a "not verified" list, next steps. Do this **before** calling a Short done.
+
+**Run these checks with evidence, not by eye alone:**
+1. Contact sheet of the final MP4 every ~2.5 s (`ffmpeg -ss T … tile=9x2`) and **read every tile**: clipped banners, props over faces, text colliding with subtitles (y 1500–1700), progress dots, emoji over headlines.
+2. Subtitles vs audio: re-transcribe the cleaned voice with a second model/size; where they disagree with the script, patch it (below).
+3. `ebur128=peak=true` on the final MP4 (AAC re-encode costs ~1.5 LU); lip-sync lag per window (< 1 frame).
+4. Link check across all pages (every local `href/src` exists); `grep` for secrets (the spec's own placeholder `fal_sk_` is a known false positive).
+5. **Test the kit from scratch**: `new-short.sh <tmp>` then `npx tsc --noEmit` in `remotion/`. (This caught missing `data.json`/`eyes.json`; the template now ships placeholder copies in `remotion/public/`.)
+6. Rights check: third-party photos (people, cars), logos (name-only use), plates/identifiers blurred.
+
+**New storyboard fields:**
+- `word_patches: [{"match":["a","relax."],"to":"relaxed."}]` fixes ASR mistakes while keeping Whisper's timing (applied after cuts).
+- `take.cuts`, `cams`, `overlays`, `cta`, `outro_seconds` (≥ 2.6 s so the end card can be read).
+
+**Subtitle rule:** groups of up to 3 words, **never across a sentence end** (`. ! ?`), current word highlighted.
+
+**Repo hygiene:** do not commit a new MP4 for every iteration: each version stays in git history (this project: `.git` 172 MB after 4 versions). Use GitHub Releases / Git LFS for `short.mp4`, or commit it only at milestones; never rewrite history or force-push without the owner's OK.
+
+**Working rule:** commit **and push** after every change; verify the live Pages file (`content-length` equals local) before reporting done.
+
+See also: [recommendations.html](recommendations.html) (this project's review), [kit spec v2](kitspec.html).
