@@ -5,7 +5,14 @@
   "source": "ZOOM0023.WAV",
   "start": 68.2,
   "end": 114.4,
-  "note": "second (last) take; first take at 22-61s is discarded"
+  "note": "second (last) take; first take at 22-61s is discarded",
+  "cuts": [
+   [
+    93.2,
+    95.05
+   ]
+  ],
+  "cuts_note": "removes 'distilled, goes away' (user request); zoom-time seconds"
  },
  "hook_seconds": 1.5,
  "outro_seconds": 1.2,
@@ -55,7 +62,7 @@
   {
    "id": 8,
    "type": "smart",
-   "start_word": "Distilled#2",
+   "start_word": "Distilled",
    "action": "Sunglasses on, lean back"
   },
   {
@@ -96,13 +103,18 @@
   },
   {
    "id": "shades",
-   "from": 28.4,
-   "to": 32.4
+   "from": 26.55,
+   "to": 30.55
+  },
+  {
+   "id": "bank",
+   "from": 39.9,
+   "to": 43.1
   },
   {
    "id": "landrover",
-   "from": 45.2,
-   "to": 48.9
+   "from": 43.1,
+   "to": 47.1
   }
  ],
  "overlays": [
@@ -114,13 +126,8 @@
   },
   {
    "id": "ronaldinho",
-   "from": 32.2,
-   "to": 35.3
-  },
-  {
-   "id": "bank",
-   "from": 42.6,
-   "to": 45.2
+   "from": 30.35,
+   "to": 33.3
   }
  ]
 }
