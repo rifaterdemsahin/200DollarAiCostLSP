@@ -1,0 +1,81 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Design: term flywheel</title><link rel="stylesheet" href="style.css">
+<style>.mermaid{background:#fff;border-radius:14px;padding:12px;margin:12px 0;overflow:auto}.steps li{margin:.5em 0}</style></head><body><main>
+<h1>🧭 Design: one Short = one new term → Skool</h1>
+<p class="dim">The content design behind every Short in this series, and the flywheel that is supposed to make each one help the next. <b>It is a hypothesis to test, not a proven result.</b></p>
+
+<h2>💡 The idea</h2>
+<div class="grid"><div class="card"><h3>1 · Give people a new term</h3><p>Every Short teaches <b>one term people need to learn</b> (this one: <b>LSP</b>). A term is a handle: once you have the word you can search it, ask about it and use it.</p></div>
+<div class="card"><h3>2 · Make it matter now</h3><p>A fun metaphor and one concrete payoff (LSP = “glasses” for a cheap model, so you don't pay $200). The Short earns attention; the term earns curiosity.</p></div>
+<div class="card"><h3>3 · Send them to Skool to learn it</h3><p>The Short can't teach setup in 45 s. The pinned comment explains the term in 3 sentences and points to <b>Delivery Pilot on Skool</b> for the step-by-step, the Q&amp;A and the people.</p></div></div>
+
+<h2>📖 The term card (fill one per Short)</h2>
+<div class="card"><table>
+<tr><th>Field</th><th>Example: LSP</th></tr>
+<tr><td>Term</td><td><b>LSP</b> (Language Server Protocol)</td></tr>
+<tr><td>One-line meaning</td><td>The standard behind the red squiggles: a language server tells the agent exact errors after every edit.</td></tr>
+<tr><td>Metaphor / gag</td><td>$200 = a car payment; give your cheap model glasses 👓</td></tr>
+<tr><td>Proof</td><td>Screen capture of Kilo fixing a real diagnostic (to record; not in the video yet)</td></tr>
+<tr><td>Pinned comment</td><td>Term line + 3-sentence explainer + Skool link + question</td></tr>
+<tr><td>Skool next step</td><td>Lesson: what it is · how to turn it on · how to verify it works · share your result</td></tr>
+<tr><td>Question to the audience</td><td>Which cheap model are you running with LSP on?</td></tr></table>
+<p><b>Term line used in the comments:</b></p><textarea id="b1" rows="4" readonly>📖 New term of the day: LSP. Learn it step by step (what it is, how to turn it on, how to check it works) inside Delivery Pilot.</textarea><button class="btn" onclick="copyText(document.getElementById('b1').value);this.textContent='✅ Copied'">📋 Copy</button></div>
+
+<h2>🌀 The flywheel</h2>
+<pre class="mermaid">flowchart TB
+  A["🎬 SHORT<br/>teaches ONE new term<br/>(example: LSP)"] --> B["🤔 CURIOSITY<br/>'wait, what is LSP?'"]
+  B --> C["📌 PINNED COMMENT<br/>term in 3 sentences<br/>+ link to Skool"]
+  C --> D["🏫 SKOOL: Delivery Pilot<br/>term lesson · setup · Q&A"]
+  D --> E["🛠️ MEMBERS TRY IT<br/>wins + stuck points"]
+  E --> F["📸 PROOF + QUESTIONS<br/>real screenshots, real gaps"]
+  F --> G["💡 NEXT TERM<br/>picked from the questions"]
+  G --> A
+  F -. "proof clips become b-roll" .-> A
+  classDef short fill:#ffd23f,stroke:#000,color:#000
+  classDef skool fill:#12a56a,stroke:#000,color:#fff
+  classDef loop fill:#3ea8ff,stroke:#000,color:#000
+  class A,C short
+  class D,E skool
+  class B,F,G loop</pre>
+<h3>How it spins</h3>
+<ol class="steps">
+<li><b>Short → term.</b> Each Short ends with the viewer holding one new word. Cost: one idea per video, no feature dumps.</li>
+<li><b>Curiosity → pinned comment.</b> “What is LSP?” is answered in 3 sentences right where they are asking, with the link. No click needed to get the value; a click is needed to get <i>depth</i>.</li>
+<li><b>Skool → learning.</b> The community holds what a Short cannot: setup steps, checks (“is it really passing diagnostics?”), people to ask. Each term gets a lesson and a thread.</li>
+<li><b>Members try it → wins and stuck points.</b> Screenshots of an agent fixing a diagnostic are proof; stuck points are the next lesson.</li>
+<li><b>Proof + questions → next term.</b> The questions in Skool and in YouTube comments are the topic list. Proof clips become b-roll for the next Short (fixes the “no proof on screen” gap).</li>
+<li><b>Next term → next Short.</b> Each new Short links back to earlier terms, so every Short is also an entry point to the whole library.</li></ol>
+
+<h3>Why it should compound (three loops)</h3>
+<div class="grid"><div class="card"><h3>📺 Content loop</h3><p>Questions from members → topics → Shorts. Topic research gets cheaper and more relevant with every cycle.</p></div>
+<div class="card"><h3>🏫 Community loop</h3><p>More members → more wins and answers → a better reason for the next viewer to join.</p></div>
+<div class="card"><h3>📚 Library loop</h3><p>Every term lesson stays. New Shorts point to old terms; old lessons keep working for new viewers.</p></div></div>
+
+<h2>🛠️ Producing a term Short</h2>
+<pre class="mermaid">flowchart TD
+  T["1 · Pick the TERM<br/>one word people must learn"] --> M["2 · One-line meaning<br/>+ one metaphor (car payment, glasses)"]
+  M --> P["3 · One PROOF shot<br/>real screen capture"]
+  P --> S["4 · Short (≤ 60 s)<br/>hook → problem → term → payoff → CTA"]
+  S --> K["5 · Pinned comment<br/>term line + Skool link + question"]
+  K --> L["6 · Skool lesson for the term<br/>what · how to turn on · how to verify"]
+  L --> R["7 · Review<br/>what did people ask? what broke?"]
+  R --> T</pre>
+
+<h2>📊 What to measure (to know if it spins)</h2>
+<div class="card"><table><tr><th>Stage</th><th>Signal</th><th>How</th></tr>
+<tr><td>Curiosity</td><td>Comments asking “what is X?”; replies to the question</td><td>YouTube Studio comments</td></tr>
+<tr><td>Hand-off</td><td>New Skool members in the days after a Short</td><td>Skool member list; add a join question “Which Short brought you here?”</td></tr>
+<tr><td>Activation</td><td>New members who post an intro or a result</td><td>Skool: intros, “start here” replies</td></tr>
+<tr><td>Proof</td><td>Screenshots/results shared per term</td><td>Count per term thread</td></tr>
+<tr><td>Feedback</td><td>Terms requested by members that become a Short</td><td>Tally in the term-request thread</td></tr></table>
+<p class="dim">No baseline exists yet, so treat the first 3–5 term Shorts as the experiment. Judge by Skool joins and replies per Short, not views alone. Don't promise members results or income.</p></div>
+
+<h2>🗂️ Term backlog (candidates, to be decided by members' questions)</h2>
+<div class="card"><span class="tag">LSP ✅ (this Short)</span><span class="tag">MCP</span><span class="tag">tokens</span><span class="tag">context window</span><span class="tag">prompt caching</span><span class="tag">distilled models</span><span class="tag">agents vs workflows</span><span class="tag">evals</span><span class="tag">RAG</span></div>
+
+<h2>📍 Where the design shows up</h2>
+<div class="card"><ul><li>🎬 Video: end card names <b>Delivery Pilot</b> and shows the Skool link.</li><li>📌 YouTube pinned comment: term line + explainer + link + question (<a href="metadata.html">metadata</a>).</li><li>🏫 <a href="skool.html">Skool page</a> and the welcome post: “every Short teaches one term; next terms come from your questions”.</li><li>📘 Spec: brief field <i>Term</i> and the term card (<a href="kitspec.html">kit spec</a>).</li></ul>
+<a class="btn" href="https://www.skool.com/delivery-pilot-8938" target="_blank" rel="noopener">🚀 Join Delivery Pilot</a></div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script>if(window.mermaid){mermaid.initialize({startOnLoad:true,theme:"default",flowchart:{curve:"basis",htmlLabels:true}});}else{document.querySelectorAll(".mermaid").forEach(e=>e.style.whiteSpace="pre")}</script>
+<script src="nav.js"></script></body></html>

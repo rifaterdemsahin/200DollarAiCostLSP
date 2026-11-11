@@ -6,11 +6,14 @@ R = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); os.chdir(R)
 URL = "https://www.skool.com/delivery-pilot-8938"
 LSP_SHORT = """❓ What is LSP?
 LSP = Language Server Protocol, the open standard behind the red squiggles in your editor. A "language server" (TypeScript, Python, Go, Rust…) checks your code and reports exact errors: wrong type, missing import, function doesn't exist. If your agent tool feeds those diagnostics back after every edit, even a cheap model fixes real errors instead of guessing."""
+TERM = f"""📖 New term of the day: LSP. Learn it step by step (what it is, how to turn it on, how to check it works) inside Delivery Pilot."""
 YT = f"""🚗 Keep the car. Give your cheap model glasses 👓
 
 Turn on LSP in Kilo Code and a cheap model reads real errors (wrong type, missing import) instead of guessing. That's the whole trick.
 
 {LSP_SHORT}
+
+{TERM}
 
 🚀 Want the setup, the prompts and a place to ask questions? Join Delivery Pilot, our Skool community:
 {URL}
@@ -21,6 +24,7 @@ SK = f"""📌 START HERE: Welcome to Delivery Pilot 🚀
 We help each other deliver real value with AI agents: you're the pilot, the bots do the flying.
 
 {LSP_SHORT}
+📖 Every Short teaches one new term. This one: LSP. Next terms come from YOUR questions, so ask below.
 ⚠️ It's not a magic switch: check that your setup really passes diagnostics to the agent, and tell us what you see.
 
 1️⃣ Say hi: who you are, what you build, which editor + agent + model you use.

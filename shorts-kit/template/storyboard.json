@@ -151,5 +151,10 @@
   "platform": "Skool",
   "url": "https://www.skool.com/delivery-pilot-8938",
   "logo": "skool.png"
+ },
+ "term": {
+  "name": "LSP",
+  "meaning": "Language Server Protocol: the standard behind editor red squiggles; gives agents exact errors",
+  "skool": "https://www.skool.com/delivery-pilot-8938"
  }
 }

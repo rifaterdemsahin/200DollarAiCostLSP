@@ -4,7 +4,7 @@
     ["index.html#preprod", "📝 Pre-prod"], ["index.html#prod", "🎬 Prod"], ["index.html#postprod", "✅ Post-prod"],
     ["player.html", "▶️ Player & output"], ["metadata.html", "📺 YouTube metadata"], ["recommendations.html", "💡 Recommendations"],
     ["spec.html", "📘 Master spec"], ["kit.html", "🧰 Starter kit"], ["kitspec.html", "📗 Kit spec v2"],
-    ["skool.html", "🏫 Skool community"], ["https://www.skool.com/delivery-pilot-8938", "🚀 Join Delivery Pilot"],
+    ["design.html", "🧭 Design & flywheel"], ["skool.html", "🏫 Skool community"], ["https://www.skool.com/delivery-pilot-8938", "🚀 Join Delivery Pilot"],
   ];
   const here = location.pathname.split("/").pop() || "index.html";
   const nav = document.createElement("nav");

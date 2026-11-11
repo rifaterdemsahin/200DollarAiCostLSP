@@ -12,6 +12,7 @@ Reusable recipe. Proven on "Don't Pay $200. Give Your Cheap Model Glasses." (48.
 | Working title / claim we answer / our reply | |
 | Metaphor (one image per beat) | |
 | Hook (≤ 12 words, typed card, frame 0) | |
+| **Term** the Short teaches (+ meaning, metaphor, proof, community next step) | |
 | Payoff / formula | |
 | CTA (one ask; name + URL placeholder) | |
 | Inputs | voice recording (WAV), optional on-camera clip, planning script |
@@ -173,5 +174,20 @@ Rules: the repo must be public (or a paid plan) for Pages; **everything committe
 
 **Working rule:** commit **and push** after every change; verify the live Pages file (`content-length` equals local) before reporting done.
 
-## 16. Start prompt for a new Claude session
+## 17. Design: one Short = one new term → community (flywheel)
+Page: `design.html` (menu 🧭), built by `scripts/build_design.py` (mermaid diagrams via cdnjs `mermaid@10.9.1`, plain-text fallback offline).
+
+**Principle.** Every Short teaches **one term people need to learn** (example: LSP), makes it matter with a metaphor + one payoff, and sends viewers to the **community (Skool: Delivery Pilot)** for the step-by-step. The pinned comment explains the term in 3 sentences (value without a click) and links for depth.
+
+**Brief field:** *Term* (name, one-line meaning, metaphor, proof shot, Skool next step, audience question), stored in `storyboard.json` → `term`.
+
+**Flywheel (mermaid):** Short teaches term → curiosity ("what is X?") → pinned comment (term line + link + question) → Skool lesson/thread → members try it, post wins and stuck points → proof + questions → next term (and proof clips become b-roll) → next Short, which also links to earlier terms.
+
+**Three loops:** content (questions → topics), community (more members → more wins → better reason to join), library (lessons persist; new Shorts point to old terms).
+
+**Pinned-comment template:** hook line · term explainer (2–3 sentences) · `📖 New term of the day: <TERM>. Learn it step by step … inside <community>.` · CTA + URL · question. Shared strings live in `scripts/build_community.py`.
+
+**Measure (hypothesis, no baseline yet):** comments asking "what is X?", new community members after each Short (add a join question "Which Short brought you here?"), activation (intro/result posts), proof shared per term, member-requested terms that become Shorts. Judge the first 3–5 term Shorts as an experiment; no income or result promises to members.
+
+## 18. Start prompt for a new Claude session
 > Use shorts-kit/MASTER_SPEC.md. Inputs: recording `<path>`, script idea `<paste>`. Last takes are the correct takes. Bootstrap with new-short.sh, build the Short with Remotion (fun, action), one index.html with preprod/prod/postprod + shared menu, a separate metadata.html, update the master spec, commit on a branch, push, deploy, give me clickable URLs.
