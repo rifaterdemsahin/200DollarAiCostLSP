@@ -107,5 +107,29 @@ Title ≤ 100 chars (+2 alternates, `#Shorts`); description = hook, reframe, for
 10. **User photos of cars/people/places**: blur number plates and other identifiers (`boxblur` on cropped regions; radii must stay < half the crop's chroma size) and say so in the sanity check.
 11. "Relaxed / reaction" beats: use the A-roll itself (it already shows you) with a banner + prop card instead of stock emoji art.
 
-## 14. Start prompt for a new Claude session
+## 14. HTML site + GitHub Pages deployment
+**Pages (all share one menu from `nav.js`; edit `LINKS` once):**
+| Page | File | Built by | Purpose |
+|---|---|---|---|
+| Project | `index.html` | by hand | `#preprod`, `#prod`, `#postprod` sections, thumbnail linking to the player |
+| Player & output | `player.html` | `scripts/build_site.py` | dedicated player (chapters from `data.json`, speed, copy link), measured specs (length, size, LUFS/peak via ffprobe/ffmpeg), thumbnail, file table with size + download + copy-link |
+| YouTube metadata | `metadata.html` | by hand | title, description, tags, pinned comment, upload settings, copy buttons + counters |
+| Master spec | `spec.html` ← `MASTER_SPEC.md` | `build_site.py` | rendered Markdown in the shared menu |
+| Kit pages | `kit.html`, `kitspec.html`, `skill.html`, `cheatsheet.html` | `build_site.py` | rendered Markdown of `shorts-kit/*` |
+Every page also gets the floating 📝 notes panel (`nav.js`: autosave per page, copy / download / clear; key `n` opens, `Esc` closes) and `window.copyText()`.
+
+**Markdown rendering:** GitHub Pages serves a `.md` URL as raw text (`…/MASTER_SPEC.md` stays raw). To show it formatted inside the menu, `build_site.py` embeds the Markdown as JSON in `<name>.html` and renders it with `marked` (cdnjs, pinned 12.0.2), falling back to plain text offline. **Re-run `python3 -I scripts/build_site.py` after editing any `.md` or re-rendering the video** and commit the generated `.html`.
+
+**Deploy (GitHub Pages, from the feature branch so `main` stays untouched):**
+```bash
+python3 -I scripts/build_site.py && git add -A && git commit -m "…" && git push -u origin <branch>
+gh api -X POST repos/<user>/<repo>/pages -f "source[branch]=<branch>" -f "source[path]=/"   # once; later pushes redeploy automatically
+gh api repos/<user>/<repo>/pages -q '.status+" "+.html_url'                                   # built?
+# verify the live file is the new one (Pages caches for ~1 min):
+until [ "$(curl -sI "https://<user>.github.io/<repo>/short.mp4?x=$RANDOM" | grep -i content-length | tr -dc 0-9)" = "$(stat -f%z short.mp4)" ]; do sleep 5; done
+open -a "Google Chrome" https://<user>.github.io/<repo>/
+```
+Rules: the repo must be public (or a paid plan) for Pages; **everything committed becomes public** (voice, on-camera video stills, user photos, plates blurred); keep each file < 100 MB (the MP4 is ~50 MB; the 4K source and `cam.mp4` stay out of git); `remotion/public/*` and heavy intermediates are gitignored; never commit secrets. Live URLs for this project: `https://rifaterdemsahin.github.io/200DollarAiCostLSP/` (`index.html`, `player.html`, `metadata.html`, `spec.html`, `kit.html`).
+
+## 15. Start prompt for a new Claude session
 > Use shorts-kit/MASTER_SPEC.md. Inputs: recording `<path>`, script idea `<paste>`. Last takes are the correct takes. Bootstrap with new-short.sh, build the Short with Remotion (fun, action), one index.html with preprod/prod/postprod + shared menu, a separate metadata.html, update the master spec, commit on a branch, push, deploy, give me clickable URLs.

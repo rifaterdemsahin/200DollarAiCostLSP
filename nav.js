@@ -2,7 +2,7 @@
 (function () {
   const LINKS = [
     ["index.html#preprod", "1 · Pre-prod"], ["index.html#prod", "2 · Prod"], ["index.html#postprod", "3 · Post-prod"],
-    ["metadata.html", "YouTube metadata"], ["MASTER_SPEC.md", "Master spec"], ["shorts-kit/README.md", "Starter kit"],
+    ["player.html", "▶️ Player & output"], ["metadata.html", "YouTube metadata"], ["spec.html", "Master spec"], ["kit.html", "Starter kit"], ["kitspec.html", "Kit spec v2"],
   ];
   const here = location.pathname.split("/").pop() || "index.html";
   const nav = document.createElement("nav");
