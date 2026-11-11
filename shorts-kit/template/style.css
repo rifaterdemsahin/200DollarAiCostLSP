@@ -14,3 +14,5 @@ video{max-width:100%;border-radius:14px;background:#000}.hero{display:flex;gap:2
 .ok{color:var(--g)}.bad{color:var(--r)}.dim{color:var(--dim)}.tag{display:inline-block;background:#ffffff18;padding:2px 9px;border-radius:12px;margin:2px;font-size:13px}
 .act{color:var(--b)}textarea{width:100%;background:#000;color:#eee;border:1px solid #444;border-radius:8px;padding:10px;font:14px/1.5 ui-monospace,Menlo,monospace}
 .cnt{font-size:12px;color:var(--dim)}@media(max-width:600px){h1{font-size:24px}}
+footer#notes{margin-top:40px;background:var(--card);border-top:3px solid var(--y);padding:16px}
+footer#notes .notes-in{max-width:1020px;margin:0 auto}footer#notes textarea{margin:8px 0}

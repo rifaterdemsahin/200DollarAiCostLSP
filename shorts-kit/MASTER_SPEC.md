@@ -16,7 +16,7 @@ Reusable recipe. Proven on "Don't Pay $200. Give Your Cheap Model Glasses." (48.
 | Budget | $0 by default (local audio synthesis); optional fal.ai for images/voice |
 
 ## 1. Phases and deliverables
-One `index.html` with **three sections + a shared menu** (`nav.js`), plus one separate `metadata.html`.
+One `index.html` with **three sections + a shared menu and a notes footer on every page** (`nav.js`), plus one separate `metadata.html`.
 | Phase | Section id | Contents |
 |---|---|---|
 | 1 Pre-prod | `#preprod` | brief, source files, transcript, **final script**, original planning script, captions plan, proof check, action cues |
