@@ -26,9 +26,10 @@ export const Logos: React.FC = () => (
 // ---------- camera layer: my video, lip-synced via waveform offset; cam audio is never played ----------
 export const CamLayer: React.FC<{ from: number; children?: React.ReactNode }> = ({ from, children }) => {
   const f = useCurrentFrame(); const H = data.voice_delay * data.fps;
-  const sc = 1 + ease(f, 0, 7, .14, 0);
+  const ZOOM = 1.22;                                   // A-roll base zoom, centred on the face (origin 50% 42%)
+  const sc = ZOOM + ease(f, 0, 7, .14, 0) + f * .0009;   // + entry punch + slow push-in
   return <div style={{ position: "absolute", inset: 0, overflow: "hidden", background: "#000" }}>
-    <div style={{ position: "absolute", inset: 0, transform: `scale(${sc})` }}>
+    <div style={{ position: "absolute", inset: 0, transformOrigin: "50% 42%", transform: `scale(${sc})` }}>
       <OffthreadVideo src={staticFile("cam.mp4")} startFrom={Math.max(0, Math.round(from - H))} muted style={{ width: 1080, height: 1920, objectFit: "cover" }} />
     </div>
     {f < 4 && <div style={{ position: "absolute", inset: 0, background: "#fff", opacity: .85 - f * .2 }} />}
@@ -51,7 +52,7 @@ export const CamShades: React.FC = () => {
   const f = useCurrentFrame(); const d = useSpring(34, { damping: 7, stiffness: 160, mass: 1 });
   return <>
     <Banner color={C.green}>distilled + LSP</Banner>
-    <div style={{ position: "absolute", left: 540 - 190, top: 790 - (1 - d) * 900, fontSize: 380, lineHeight: 1, fontFamily: "Apple Color Emoji", opacity: f >= 34 ? 1 : 0 }}>🕶️</div>
+    <div style={{ position: "absolute", left: 540 - 215, top: 560 - (1 - d) * 900, fontSize: 430, lineHeight: 1, fontFamily: "Apple Color Emoji", opacity: f >= 34 ? 1 : 0 }}>🕶️</div>
     <Pop delay={52} style={{ position: "absolute", top: 1100, left: 0, width: 1080 }}><Big size={150} color={C.yellow} style={{ WebkitTextStroke: "10px #000", paintOrder: "stroke fill" }}>smart enough</Big></Pop>
   </>;
 };
