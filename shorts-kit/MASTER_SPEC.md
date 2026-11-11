@@ -149,7 +149,7 @@ open -a "Google Chrome" https://<user>.github.io/<repo>/
 
 Rules: the repo must be public (or a paid plan) for Pages; **everything committed becomes public** (voice, on-camera video stills, user photos, plates blurred); keep each file < 100 MB (the MP4 is ~50 MB; the 4K source and `cam.mp4` stay out of git); `remotion/public/*` and heavy intermediates are gitignored; never commit secrets. Live URLs for this project: `https://rifaterdemsahin.github.io/200DollarAiCostLSP/` (`index.html`, `player.html`, `metadata.html`, `spec.html`, `kit.html`).
 
-## 16. Review pass: recommendations page + sanity-check fixes (added 2026-11-11)
+## 15. Review pass: recommendations page + sanity-check fixes (added 2026-11-11)
 **Deliverable:** `RECOMMENDATIONS.md` → `recommendations.html` (menu 💡): honest verdict, ranked recommendations with why/effort, a measured sanity-check table, a "not verified" list, next steps. Do this **before** calling a Short done.
 
 **Run these checks with evidence, not by eye alone:**
@@ -170,5 +170,5 @@ Rules: the repo must be public (or a paid plan) for Pages; **everything committe
 
 **Working rule:** commit **and push** after every change; verify the live Pages file (`content-length` equals local) before reporting done.
 
-## 15. Start prompt for a new Claude session
+## 16. Start prompt for a new Claude session
 > Use shorts-kit/MASTER_SPEC.md. Inputs: recording `<path>`, script idea `<paste>`. Last takes are the correct takes. Bootstrap with new-short.sh, build the Short with Remotion (fun, action), one index.html with preprod/prod/postprod + shared menu, a separate metadata.html, update the master spec, commit on a branch, push, deploy, give me clickable URLs.
