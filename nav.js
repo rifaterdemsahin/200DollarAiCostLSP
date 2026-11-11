@@ -20,8 +20,12 @@
     <div id="note-panel" hidden><div class="np-head"><b>📝 Notes — ${page}</b><button id="note-x" aria-label="Close">✕</button></div>
       <textarea id="note-box" rows="9" placeholder="Take notes here (saved in this browser)…"></textarea>
       <div class="np-row"><button class="btn" id="note-copy">📋 Copy</button><button class="btn" id="note-dl">⬇️ Download</button><button class="btn" id="note-clear">🗑️ Clear</button></div>
-      <div class="cnt" id="note-st"></div></div>`;
+      <div class="cnt" id="note-st"></div>
+      <a class="np-cta" href="https://www.skool.com" target="_blank" rel="noopener"><img src="skool.png" alt="Skool"><span>Join our Skool community<br><b>Delivery Pilot</b></span></a></div>`;
   document.body.appendChild(wrap);
+  // what gets copied / downloaded: page reference on top, community CTA at the end
+  const CTA = "Join our Skool community: Delivery Pilot 🚀";
+  const out = () => "📝 Notes — " + (document.title || page) + "\n🔗 " + location.href.split("?")[0] + "\n🕒 " + new Date().toLocaleString() + "\n\n" + box.value.trim() + "\n\n— — —\n" + CTA + "\n";
   const $ = (id) => wrap.querySelector(id), box = $("#note-box"), st = $("#note-st"), panel = $("#note-panel");
   const say = (m) => { st.textContent = m; };
   try { box.value = localStorage.getItem(key) || ""; if (localStorage.getItem(openKey) === "1") panel.hidden = false; } catch (e) {}
@@ -31,11 +35,11 @@
   box.addEventListener("input", () => { try { localStorage.setItem(key, box.value); say("saved " + new Date().toLocaleTimeString()); } catch (e) { say("not saved: storage blocked"); } });
   // copy to clipboard (works on https/localhost; falls back to execCommand on file://)
   $("#note-copy").onclick = async () => {
-    const t = box.value; if (!t) return say("nothing to copy");
-    try { await navigator.clipboard.writeText(t); say("✅ copied to clipboard"); }
-    catch (e) { box.select(); try { document.execCommand("copy"); say("✅ copied"); } catch (e2) { say("press Cmd/Ctrl+C"); } }
+    if (!box.value.trim()) return say("nothing to copy"); const t = out();
+    try { await window.copyText(t); say("✅ copied (with page + CTA)"); }
+    catch (e) { say("copy blocked: press Cmd/Ctrl+C"); }
   };
-  $("#note-dl").onclick = () => { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([box.value], { type: "text/plain" })); a.download = "notes-" + page.replace(".html", "") + ".txt"; a.click(); };
+  $("#note-dl").onclick = () => { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([out()], { type: "text/plain" })); a.download = "notes-" + page.replace(".html", "") + ".txt"; a.click(); };
   $("#note-clear").onclick = () => { if (box.value && !confirm("Clear notes for this page?")) return; box.value = ""; try { localStorage.removeItem(key); } catch (e) {} say("cleared"); };
   // also: any <textarea> / .copy-btn on the page can use window.copyText(text)
   window.copyText = async (t) => { try { await navigator.clipboard.writeText(t); } catch (e) { const x = document.createElement("textarea"); x.value = t; document.body.appendChild(x); x.select(); document.execCommand("copy"); x.remove(); } };

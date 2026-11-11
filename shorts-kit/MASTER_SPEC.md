@@ -78,6 +78,8 @@ Title ≤ 100 chars (+2 alternates, `#Shorts`); description = hook, reframe, for
 - [ ] unproven claims listed as opinion  - [ ] guessed words (names, jargon) checked by ear  - [ ] no secrets (`grep -rI "sk_\|key"`)  - [ ] watched once with sound
 
 ## 11. Delivery
+**Commit and push after every change, continuously** (feature branch), and verify the live Pages file each time.
+
 `short.mp4`, `thumbnail.png` at repo root and in `~/Downloads`; `index.html`, `metadata.html`, `MASTER_SPEC.md` updated; branch + push + deploy (GitHub Pages); show clickable URLs; open in Google Chrome (`open -a "Google Chrome" <url>`).
 
 ## 12. Lessons (don't repeat)
@@ -116,7 +118,7 @@ Title ≤ 100 chars (+2 alternates, `#Shorts`); description = hook, reframe, for
 | YouTube metadata | `metadata.html` | by hand | title, description, tags, pinned comment, upload settings, copy buttons + counters |
 | Master spec | `spec.html` ← `MASTER_SPEC.md` | `build_site.py` | rendered Markdown in the shared menu |
 | Kit pages | `kit.html`, `kitspec.html`, `skill.html`, `cheatsheet.html` | `build_site.py` | rendered Markdown of `shorts-kit/*` |
-Every page also gets the floating 📝 notes panel (`nav.js`: autosave per page, copy / download / clear; key `n` opens, `Esc` closes) and `window.copyText()`.
+Every page also gets the floating 📝 notes panel (`nav.js`: autosave per page, copy / download / clear; key `n` opens, `Esc` closes) and `window.copyText()`. **Copied/downloaded notes start with the page title + URL + time and end with the community CTA** (`CTA` const in `nav.js`; this project: "Join our Skool community: Delivery Pilot", logo `skool.png` shown in the panel). Set the real community URL in `nav.js` when supplied (placeholder `https://www.skool.com` until then).
 
 **Markdown rendering:** GitHub Pages serves a `.md` URL as raw text (`…/MASTER_SPEC.md` stays raw). To show it formatted inside the menu, `build_site.py` embeds the Markdown as JSON in `<name>.html` and renders it with `marked` (cdnjs, pinned 12.0.2), falling back to plain text offline. **Re-run `python3 -I scripts/build_site.py` after editing any `.md` or re-rendering the video** and commit the generated `.html`.
 

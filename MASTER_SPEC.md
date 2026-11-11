@@ -353,7 +353,7 @@ Correction to §19: `C1196.MP4` **does** have an audio stream; it was misread as
 | YouTube metadata | `metadata.html` | by hand | title, description, tags, pinned comment, upload settings, copy buttons + counters |
 | Master spec | `spec.html` ← `MASTER_SPEC.md` | `build_site.py` | rendered Markdown in the shared menu |
 | Kit pages | `kit.html`, `kitspec.html`, `skill.html`, `cheatsheet.html` | `build_site.py` | rendered Markdown of `shorts-kit/*` |
-Every page also gets the floating 📝 notes panel (`nav.js`: autosave per page, copy / download / clear; key `n` opens, `Esc` closes) and `window.copyText()`.
+Every page also gets the floating 📝 notes panel (`nav.js`: autosave per page, copy / download / clear; key `n` opens, `Esc` closes) and `window.copyText()`. **Copied/downloaded notes start with the page title + URL + time and end with the community CTA** (`CTA` const in `nav.js`; this project: "Join our Skool community: Delivery Pilot", logo `skool.png` shown in the panel). Set the real community URL in `nav.js` when supplied (placeholder `https://www.skool.com` until then).
 
 **Markdown rendering:** GitHub Pages serves a `.md` URL as raw text (`…/MASTER_SPEC.md` stays raw). To show it formatted inside the menu, `build_site.py` embeds the Markdown as JSON in `<name>.html` and renders it with `marked` (cdnjs, pinned 12.0.2), falling back to plain text offline. **Re-run `python3 -I scripts/build_site.py` after editing any `.md` or re-rendering the video** and commit the generated `.html`.
 
@@ -369,3 +369,5 @@ open -a "Google Chrome" https://<user>.github.io/<repo>/
 Rules: the repo must be public (or a paid plan) for Pages; **everything committed becomes public** (voice, on-camera video stills, user photos, plates blurred); keep each file < 100 MB (the MP4 is ~50 MB; the 4K source and `cam.mp4` stay out of git); `remotion/public/*` and heavy intermediates are gitignored; never commit secrets. Live URLs for this project: `https://rifaterdemsahin.github.io/200DollarAiCostLSP/` (`index.html`, `player.html`, `metadata.html`, `spec.html`, `kit.html`).
 
 Rendered version of this file: [spec.html](spec.html) (same menu as every page).
+
+**Working rule:** commit **and push** after every change (not only at the end); feature branch, then verify the live Pages file.
