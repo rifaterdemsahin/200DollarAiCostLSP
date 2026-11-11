@@ -18,7 +18,7 @@ for page, (src, title) in MD.items():
     text = open(src, encoding="utf-8").read()
     text = re.sub(r"^---\n.*?\n---\n", "", text, count=1, flags=re.S)           # drop front matter (SKILL.md)
     j = json.dumps(text).replace("</", "<\\/")
-    open(page, "w", encoding="utf-8").write(HEAD % html.escape(title) + f'''<p class="dim">Rendered from <a href="{src}"><code>{src}</code></a> (raw file) · <a href="https://github.com/rifaterdemsahin/200DollarAiCostLSP/blob/lsp-short-v1/{src}">GitHub</a></p>
+    open(page, "w", encoding="utf-8").write(HEAD % html.escape(title) + f'''<p class="dim">Rendered from <code>{src}</code> · <a href="https://raw.githubusercontent.com/rifaterdemsahin/200DollarAiCostLSP/lsp-short-v1/{src}">raw</a> · <a href="https://github.com/rifaterdemsahin/200DollarAiCostLSP/blob/lsp-short-v1/{src}">GitHub</a></p>
 <article id="md" class="md">Loading…</article>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
 <script>const MD={j};const el=document.getElementById("md");
