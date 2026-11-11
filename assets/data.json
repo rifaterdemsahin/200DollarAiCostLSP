@@ -1,4 +1,43 @@
 {
+ "cams": [
+  {
+   "id": "carpay",
+   "from": 102,
+   "dur": 87
+  },
+  {
+   "id": "guess",
+   "from": 402,
+   "dur": 141
+  },
+  {
+   "id": "shades",
+   "from": 852,
+   "dur": 120
+  },
+  {
+   "id": "landrover",
+   "from": 1356,
+   "dur": 110
+  }
+ ],
+ "overlays": [
+  {
+   "id": "logos",
+   "from": 0,
+   "dur": 42
+  },
+  {
+   "id": "ronaldinho",
+   "from": 966,
+   "dur": 92
+  },
+  {
+   "id": "bank",
+   "from": 1278,
+   "dur": 78
+  }
+ ],
  "fps": 30,
  "total": 1467,
  "hook": 45,

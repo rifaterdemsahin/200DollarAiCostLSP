@@ -36,7 +36,9 @@ for i, sc in enumerate(sb["scenes"]):
     a = starts[i] if i else H - 0.12
     b = starts[i+1] if i+1 < len(starts) else dur
     scenes.append({"id": sc["id"], "type": sc["type"], "from": int(a*FPS), "dur": int(b*FPS) - int(a*FPS)})
-data = {"fps": FPS, "total": total, "hook": int(H*FPS), "voice_delay": H, "scenes": scenes, "words": words, "title": sb["title"]}
+cams = [{"id": c["id"], "from": int(c["from"]*FPS), "dur": int((c["to"]-c["from"])*FPS)} for c in sb.get("cams", [])]
+overlays = [{"id": o["id"], "from": int(o["from"]*FPS), "dur": int((o["to"]-o["from"])*FPS)} for o in sb.get("overlays", [])]
+data = {"cams": cams, "overlays": overlays, "fps": FPS, "total": total, "hook": int(H*FPS), "voice_delay": H, "scenes": scenes, "words": words, "title": sb["title"]}
 os.makedirs(f"{R}/remotion/public", exist_ok=True)
 json.dump(data, open(f"{R}/remotion/public/data.json","w"), indent=1)
 json.dump(data, open(f"{R}/assets/data.json","w"), indent=1)

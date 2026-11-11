@@ -53,8 +53,14 @@ for s in D["scenes"]:
         dd = s["dur"] / D["fps"] / 3
         for i in range(3): add(sfx, ts + i*dd + .15, snap(), 1.0); add(sfx, ts + i*dd + .2, ding(1046 + 200*i), .8)
     if s["type"] == "smart": add(sfx, ts + .4, ding(1568), .8)
-    if s["type"] == "keep": add(sfx, ts + .6, jingle(), 1.0)
 add(sfx, .0, slam(), .5)
+for c in D.get("cams", []):                      # video cut-in whoosh; Land Rover arrival gets the key jingle
+    add(sfx, c["from"]/D["fps"] - .05, whoosh(.3), .6)
+    if c["id"] == "landrover": add(sfx, c["from"]/D["fps"] + .8, jingle(), 1.0)
+    if c["id"] == "shades": add(sfx, c["from"]/D["fps"] + 1.4, ding(1568), .8)
+for o in D.get("overlays", []):
+    if o["id"] == "bank": add(sfx, o["from"]/D["fps"] + .2, ding(1760), .9); add(sfx, o["from"]/D["fps"] + .45, ding(2093), .9)
+    if o["id"] == "ronaldinho": add(sfx, o["from"]/D["fps"], snap(), 1.0)
 def wr(path, b, g):
     with wave.open(path, "wb") as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR)

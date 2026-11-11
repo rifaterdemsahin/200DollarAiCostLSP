@@ -15,6 +15,7 @@ One folder to start a new YouTube Short fast (built from the "$200 LSP" Short).
 ```bash
 ./new-short.sh ~/projects/my-short && cd ~/projects/my-short
 scripts/transcribe.sh "/path/recording.WAV" "names, jargon"     # pick the LAST take
+.venv/bin/python scripts/sync_video.py cam.MP4 recording.WAV      # optional: lip-synced video (python -m venv .venv; pip install numpy scipy)
 # edit storyboard.json (take, scenes) and remotion/src/scenes.tsx
 python3 -I scripts/prep_remotion.py && python3 -I scripts/mix_audio.py
 cd remotion && npm run render && npm run thumb
